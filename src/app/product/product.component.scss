@@ -1,0 +1,11 @@
+/* Aplica estilos al elemento padre que crea Angular, es decir, product. */
+:host {
+  margin: 2px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: block;
+}
+
+img {
+  max-width: 100%;
+}
