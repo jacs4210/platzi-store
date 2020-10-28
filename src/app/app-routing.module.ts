@@ -1,13 +1,9 @@
-import { LayoutComponent } from './layout/layout.component';
-import { ProductDetailComponent } from './products/components/product-detail/product-detail.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-import { ProductsComponent } from './products/components/products/products.component';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './contact/components/contact.component';
-import { HomeComponent } from './home/components/home/home.component';
 import { DemoComponent } from './demo/components/demo.component';
+import { LayoutComponent } from './layout/layout.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -21,25 +17,21 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        component: HomeComponent
+        loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       },
       {
         path: 'products',
-        component: ProductsComponent
-      },
-      {
-        path: 'products/:id',
-        component: ProductDetailComponent
+        loadChildren: () => import('./products/products.module').then(m => m.ProductsModule)
       },
       {
         path: 'contact',
-        component: ContactComponent
+        loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule)
       }
     ]
   },
   {
     path: 'demo',
-    component: DemoComponent
+    loadChildren: () => import('./demo/demo.module').then(m => m.DemoModule)
   },
   {
     path: '**',
@@ -48,7 +40,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    preloadingStrategy: PreloadAllModules
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
