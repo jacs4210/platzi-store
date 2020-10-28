@@ -1,13 +1,13 @@
 import { LayoutComponent } from './layout/layout.component';
-import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { ProductDetailComponent } from './products/components/product-detail/product-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ProductsComponent } from './products/products.component';
-import { ContactComponent } from './contact/contact.component';
+import { ProductsComponent } from './products/components/products/products.component';
+import { ContactComponent } from './contact/components/contact.component';
 import { HomeComponent } from './home/components/home/home.component';
-import { DemoComponent } from './demo/demo.component';
+import { DemoComponent } from './demo/components/demo.component';
 
 const routes: Routes = [
   {
